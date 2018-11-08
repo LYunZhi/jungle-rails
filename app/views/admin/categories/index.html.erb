@@ -1,6 +1,4 @@
 <h1>Categories</h1>
 <ul class="categories">
-  <% @categories.each do |category| %>
-  <li><%= category.name %></li>
-  <% end %>
+  <%= render @categories %>
 </ul>
