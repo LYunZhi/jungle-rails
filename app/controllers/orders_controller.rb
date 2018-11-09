@@ -2,6 +2,13 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @line_items = LineItem.where(order_id: params[:id])
+    @product_ids = Array.new
+    @line_items.each do |item|
+      @product_ids << item.product_id
+    end
+    @products = Product.find(@product_ids)
+
   end
 
   def create
