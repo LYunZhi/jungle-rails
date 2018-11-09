@@ -6,10 +6,10 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
-    <h5>Total: <%= '%.2f' % (@order.total_cents / 100).to_f %> Ordered with Email: <%= @order.email %></h5>
+    <h5>Total: <%= humanized_money_with_symbol @order.total_cents / 100.0 %> Ordered with Email: <%= @order.email %></h5>
     <ul>
       <% @line_items.each do |item| %>
-        <li>Item Quantity: <%= item.quantity %> - Price: <%= '%.2f' % (item.item_price_cents / 100).to_f %></li>
+        <li>Item Quantity: <%= item.quantity %> - Price: <%= humanized_money_with_symbol item.item_price_cents / 100.0 %></li>
         <% @products.each do |product| %>
         <% if product.id == item.product_id %>
           <li><%= product.name %></li>
