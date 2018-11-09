@@ -26,6 +26,33 @@
       </div>
     </div>
 
+    <div class="row">
+      <strong>Give us a review</strong>
+      <div class="col-sm-12">
+        <%= form_for([@product, @product.review.build]) do |f| %>
+          <p>
+            <%= f.label :description %><br>
+            <%= f.text_area :description %>
+          </p>
+          <p>
+            <%= f.select :rating, [ 1, 2, 3, 4, 5 ], :prompt => 'Select One' %>
+          </p>
+          <p>
+            <%= f.submit %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <strong>Reviews</strong>
+      <div class="col-sm-12">
+        <% @product.review.each do |review| %>
+        <li><%= review.description %> - <%= review.rating %></li>
+        <% end %>
+      </div>
+    </div>
+
   </article>
 
 </section>
