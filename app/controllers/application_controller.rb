@@ -38,4 +38,8 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
+  def check_privileges!
+    redirect_to "/", notice: 'You dont have enough permissions to be here' unless current_user
+  end
+
 end
